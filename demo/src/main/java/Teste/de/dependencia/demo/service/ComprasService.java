@@ -35,9 +35,11 @@ public class ComprasService {
         ProdutosEntity produtor =  produtosRepository.getReferenceById(dto.idproduto());
 
 
+
         ComprasEntity compras = new ComprasEntity();
         compras.setUsuario(usuario);
         compras.setProduto(produtor);
+        compras.setQtdCompra(dto.qtdCompra());
         comprasRepository.save(compras);
 
     }
