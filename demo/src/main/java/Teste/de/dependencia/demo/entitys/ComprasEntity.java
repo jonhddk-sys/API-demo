@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+
+
 @Entity
 @Getter
 @Setter
@@ -17,6 +21,17 @@ public class ComprasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idcompra;
 
+    @Column(nullable = false)
+
+    private BigDecimal qtdCompra;
+
+    @Column(nullable = false)
+    private BigDecimal valorTotal;
+
+
+    @Column(nullable = false,updatable = false)
+    private Instant dataCompra;
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private UsuariosEntity usuario;
@@ -24,6 +39,13 @@ public class ComprasEntity {
     @ManyToOne
     @JoinColumn(name = "idproduto")
     private ProdutosEntity produto;
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCompra = Instant.now();
+        this.valorTotal = this.produto.getValor().multiply(this.qtdCompra);
+
+    }
 
 
 }
