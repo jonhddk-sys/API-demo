@@ -28,12 +28,11 @@ public class ComprasService {
         boolean produto = produtosRepository.existsById(dto.idproduto());
 
         if(!user || !produto){
-            throw new RuntimeException("Usuario ou Produto no encontrado");
+            throw new RuntimeException("Usuario ou Produto nao encontrado");
         }
 
         UsuariosEntity usuario = usuariosRepository.getReferenceById(dto.idusuario());
         ProdutosEntity produtor =  produtosRepository.getReferenceById(dto.idproduto());
-
 
 
         ComprasEntity compras = new ComprasEntity();

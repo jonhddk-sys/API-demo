@@ -19,7 +19,7 @@ public class AuthService {
     @Autowired
     private JwtService jwtService;
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void create(CreateUsuarioDto user){
         boolean exixte = userrepository.existsByEmail(user.email());
@@ -34,7 +34,6 @@ public class AuthService {
             userrepository.save(userEntity);
         }
     }
-
 
     public String login(LoginUserDto dto){
         UsuariosEntity usuario = userrepository.findByEmail(dto.email());
