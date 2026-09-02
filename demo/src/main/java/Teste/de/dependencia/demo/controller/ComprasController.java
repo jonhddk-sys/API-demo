@@ -3,6 +3,7 @@ package Teste.de.dependencia.demo.controller;
 import Teste.de.dependencia.demo.dto.ComprasDto;
 import Teste.de.dependencia.demo.dto.responseDto.ComprasResponseDto;
 import Teste.de.dependencia.demo.entitys.ComprasEntity;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/compras")
+@SecurityRequirement(name = "bearer-key")
 public class ComprasController {
 
     @Autowired

@@ -2,6 +2,7 @@ package Teste.de.dependencia.demo.controller;
 
 import Teste.de.dependencia.demo.dto.ProdutoDto;
 import Teste.de.dependencia.demo.entitys.ProdutosEntity;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Produtos")
+@SecurityRequirement(name = "bearer-key")
 public class ProdutoController {
     @Autowired
     private ProdutosService service;
